@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 
 
 class Vehicle(ABC):
+    instance = None
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls)
 
@@ -31,10 +32,10 @@ class Vehicle(ABC):
         pass
 
     def __str__(self):
-        return f"{self._marka} {self._model} | {self._yil} | Tezlik: {self.tezlik}"
+        return f"{self._marka} {self._model} {self._yil} Tezlik: {self.tezlik}"
 
     def __repr__(self):
-        return f"{self.__class__.__name__}('{self._marka}', '{self._model}', {self._yil}, {self.tezlik})"
+        return f"{self.__class__.__name__} {self._marka} {self._model} {self._yil} {self.tezlik}"
 
     def __bool__(self):
         return self.tezlik > 0

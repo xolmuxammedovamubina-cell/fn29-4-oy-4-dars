@@ -1,7 +1,9 @@
 from abc import ABC, abstractmethod
 
+ 
 
 class BankAccount(ABC):
+    instance = None
     def __init__(self, account_number, owner, balance):
         self._account_number = account_number
         self._owner = owner
@@ -44,10 +46,10 @@ class BankAccount(ABC):
         pass
 
     def __str__(self):
-        return f"{self._owner} | Balance: {self.balance}"
+        return f"{self._owner} Balance: {self.balance}"
 
     def __repr__(self):
-        return f"{self.__class__.__name__}({self._account_number}, '{self._owner}', {self.balance})"
+        return f"{self.__class__.__name__} {self._account_number} {self._owner} {self.balance}"
 
     def __bool__(self):
         return self.balance > 0
