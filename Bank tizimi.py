@@ -2,13 +2,14 @@ from abc import ABC, abstractmethod
 
 
 class BankAccount(ABC):
-    def __new__(cls, *args, **kwargs):
-        return super().__new__(cls)
-
     def __init__(self, account_number, owner, balance):
         self._account_number = account_number
         self._owner = owner
         self._balance = balance
+
+    def __new__(cls, *args, **kwargs):
+        return super().__new__(cls)
+    
 
     @property
     def balance(self):
